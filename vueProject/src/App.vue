@@ -19,19 +19,20 @@
           </p>
 
           <div class="choice-area">
-            <div class="action-row">
-              <button class="primary-btn action-btn" @click="handleYes">
-                愿意
-              </button>
+            <button
+              class="primary-btn home-primary"
+              @click="handleYes"
+            >
+              愿意
+            </button>
 
-              <button
-                class="ghost-btn action-btn"
-                :style="{ left: `${noButtonPos.x}%`, top: `${noButtonPos.y}%` }"
-                @click="moveNoButton"
-              >
-                不要
-              </button>
-            </div>
+            <button
+              class="ghost-btn"
+              :style="{ left: `${noButtonPos.x}%`, top: `${noButtonPos.y}%` }"
+              @click="moveNoButton"
+            >
+              不要
+            </button>
 
             <button v-if="showLoveReply" class="confirm-btn" @click="goToTime">
               好眼好哦～
@@ -318,16 +319,8 @@ h2 {
 .choice-area {
   position: relative;
   width: 100%;
+  height: 180px;
   margin-top: 18px;
-}
-
-.action-row {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  width: 100%;
-  min-height: 120px;
 }
 
 .primary-btn,
@@ -345,46 +338,53 @@ h2 {
   transform: scale(0.97);
 }
 
-.action-btn {
-  min-width: 0;
-  height: 54px;
-  border-radius: 18px;
-  font-weight: 700;
-  font-size: 1.08rem;
-}
-
 .primary-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  height: 54px;
+  border-radius: 999px;
   background: linear-gradient(135deg, #ff7fb7 0%, #f85aa6 100%);
   color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
   box-shadow: 0 10px 20px rgba(249, 112, 163, 0.28);
 }
 
+.home-primary {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  width: 78%;
+  transform: translateX(-50%);
+}
+
 .confirm-btn {
-  width: 100%;
-  margin-top: 18px;
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  width: 78%;
+  transform: translateX(-50%);
   background: linear-gradient(135deg, #f4b2d9 0%, #d98ad7 100%);
   color: #fff;
   height: 54px;
-  border-radius: 18px;
+  border-radius: 999px;
   font-weight: 700;
   font-size: 1.08rem;
   box-shadow: 0 10px 20px rgba(212, 119, 204, 0.22);
 }
 
 .ghost-btn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  position: absolute;
+  min-width: 94px;
+  height: 48px;
   padding: 0 18px;
+  border-radius: 999px;
   background: rgba(255, 255, 255, 0.9);
   color: #d56ab1;
   box-shadow: 0 10px 18px rgba(201, 124, 179, 0.12);
   border: 1px solid rgba(240, 168, 213, 0.8);
+  font-weight: 700;
   font-size: 1rem;
 }
 
